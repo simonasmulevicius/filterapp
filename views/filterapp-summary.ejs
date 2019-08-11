@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <%- include head_fasterliqIcons.ejs %>
+</head>
+
+<body>
+    <div class="application-page">
+        <form action="filterapp-download" method="post" enctype="multipart/form-data">
+            <% if (foundErrors) { %>
+                <div class="response-section red-border">
+                    <h3>Detected phone numbers</h3>
+                    <% for (var i = 0, len = responseMessage.length; i < len; i++) {%>
+                        <li>
+                            <%= responseMessage[i]; %>
+                        </li>
+                        <%}%>
+                </div>
+                <% } else { %>
+                    <div class="response-section green-border">
+                        <h1>No unwanted phone numbers have been detected</h1>
+                    </div>
+                    <% } %>
+                        <div class="input-section">
+                            <input type="submit" value="Download">
+                        </div>
+
+                        <a href="/filterapp">
+                            <div class="input-section blue-big-btn-text">
+                                Filter again
+                            </div>
+                        </a>
+        </form>
+    </div>
+</body>
+
+</html>
